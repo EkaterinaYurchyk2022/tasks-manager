@@ -15,26 +15,26 @@ function App() {
     // D - delete
     // BLL:
     const todoListTitle_1: string = "What to learn"
-    const [tasks, setTasks] = useState([
-        {id: 1, title: "HTML&CSS", isDone: true},
-        {id: 2, title: "JS/ES6", isDone: true},
-        {id: 3, title: "React", isDone: false},
-    ])
-
+const [tasks, setTasks] = useState([
+    {id: 1, title: "HTML&CSS", isDone: true},
+    {id: 2, title: "JS/ES6", isDone: true},
+    {id: 3, title: "React", isDone: false},
+])
 
     const removeTask = (id: number) => {
         const filteredTasks = tasks.filter(t => t.id !== id)
-        console.log(filteredTasks)
+    setTasks(filteredTasks)
     }
+
+
 // UI:
     return (
         <div className="App">
             <TodoList
                 title={todoListTitle_1}
                 tasks={tasks}
-                removeTask={removeTask}
+                removeTasks={removeTask}
             />
-
         </div>
     );
 }
