@@ -3,7 +3,7 @@ import React from 'react';
 
 type ButtonPropsType = {
     title: string
-    onClick: ()=>
+    /* onClickRemoveTask: () => void*/
 }
 const Button = (props: ButtonPropsType) => {
     return (

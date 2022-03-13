@@ -15,15 +15,15 @@ function App() {
     // D - delete
     // BLL:
     const todoListTitle_1: string = "What to learn"
-const [tasks, setTasks] = useState([
-    {id: 1, title: "HTML&CSS", isDone: true},
-    {id: 2, title: "JS/ES6", isDone: true},
-    {id: 3, title: "React", isDone: false},
-])
+    const [tasks, setTasks] = useState<Array<TaskType>>([
+        {id: 1, title: "HTML&CSS", isDone: true},
+        {id: 2, title: "JS/ES6", isDone: true},
+        {id: 3, title: "React", isDone: false},
+    ])
 
-    const removeTask = (id: number) => {
+    const removeTasks = (id: number) => {
         const filteredTasks = tasks.filter(t => t.id !== id)
-    setTasks(filteredTasks)
+        setTasks(filteredTasks)
     }
 
 
@@ -33,7 +33,7 @@ const [tasks, setTasks] = useState([
             <TodoList
                 title={todoListTitle_1}
                 tasks={tasks}
-                removeTasks={removeTask}
+                removeTasks={removeTasks}
             />
         </div>
     );
