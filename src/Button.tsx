@@ -1,14 +1,16 @@
 import React from 'react';
+import {FilterValuesType} from "./App";
 
 
 type ButtonPropsType = {
     title: string
-    /* onClickRemoveTask: () => void*/
+    onClickHandler: () => void
+
 }
 const Button = (props: ButtonPropsType) => {
     return (
         <>
-            <button>{props.title}</button>
+            <button onClick={props.onClickHandler}>{props.title}</button>
         </>
     );
 };

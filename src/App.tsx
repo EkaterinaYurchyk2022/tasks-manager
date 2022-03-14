@@ -1,12 +1,15 @@
 import React, {useState} from 'react';
 import './App.css';
 import TodoList from "./TodoList";
+import {v1} from "uuid";
 
 export type TaskType = {
-    id: number
+    id: string
     title: string
     isDone: boolean
 }
+
+export type FilterValuesType = "all" | "active" | "completed"
 
 function App() {
     // C - create
@@ -16,24 +19,53 @@ function App() {
     // BLL:
     const todoListTitle_1: string = "What to learn"
     const [tasks, setTasks] = useState<Array<TaskType>>([
-        {id: 1, title: "HTML&CSS", isDone: true},
-        {id: 2, title: "JS/ES6", isDone: true},
-        {id: 3, title: "React", isDone: false},
+        {id: v1(), title: "HTML&CSS", isDone: true},
+        {id: v1(), title: "JS/ES6", isDone: true},
+        {id: v1(), title: "React", isDone: false},
     ])
 
-    const removeTasks = (id: number) => {
+    const [filter, setFilter] = useState<FilterValuesType>("all")
+
+    const removeTask = (id: string) => {
         const filteredTasks = tasks.filter(t => t.id !== id)
         setTasks(filteredTasks)
     }
 
+    const addTask = (title: string) => {
+        const newTask: TaskType = {
+            id: v1(),
+            title,
+            isDone: false
+        }
+        /*  const copy = [...tasks]
+          copy.unshift(newTask)*/
+        setTasks([newTask, ...tasks])
+    }
+
+    const changeFilter = (filter: FilterValuesType) => setFilter(filter)
+
+    let tasksForTodoList;
+    switch (filter) {
+        case "active":
+            tasksForTodoList = tasks.filter(t => t.isDone === false)
+            break
+        case "completed":
+            tasksForTodoList = tasks.filter(t => t.isDone === true)
+            break
+        default:
+            tasksForTodoList = tasks
+    }
 
 // UI:
     return (
         <div className="App">
             <TodoList
                 title={todoListTitle_1}
-                tasks={tasks}
-                removeTasks={removeTasks}
+                tasks={tasksForTodoList}
+                removeTasks={removeTask}
+                addTask={addTask}
+                changeFilter={changeFilter}
+
             />
         </div>
     );
