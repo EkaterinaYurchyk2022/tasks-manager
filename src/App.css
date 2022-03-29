@@ -6,21 +6,19 @@
 .App > div {
   margin-right: 50px;
 }
+
 .error {
-  border: red 3px solid;
-  outline: none;
+  border: red 1px solid;
 }
 
 .error-message {
   color: red;
 }
-.btn-active {
-  background-color: lime;
-  color: chocolate;
-  font-weight: bold;
+
+.active-filter {
+  background-color: aquamarine;
 }
 
-.isDone {
+.is-done {
   opacity: 0.5;
-  text-decoration: line-through;
 }
