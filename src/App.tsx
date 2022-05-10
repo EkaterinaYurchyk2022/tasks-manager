@@ -4,7 +4,7 @@ import {v1} from 'uuid';
 import {AddItemForm} from './AddItemForm';
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from '@material-ui/core';
 import {Menu} from '@material-ui/icons';
-import {TaskType, Todolist} from "./TodoList";
+import {TaskType, Todolist} from "./Todolist";
 
 export type FilterValuesType = "all" | "active" | "completed";
 export type TodolistType = {
