@@ -15,7 +15,7 @@ import {
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./state/tasks-reducer";
 import {TaskType, Todolist} from "./Todolist";
 import {useDispatch, useSelector} from "react-redux";
-import {AppStoreType} from "./state/store";
+import {AppRootStateType} from "./state/store";
 import {Todolist1} from "./TodoList1";
 
 
@@ -36,8 +36,8 @@ function AppWithRedux() {
     let todolistId1 = v1();
     let todolistId2 = v1();
 
-    let todolists = useSelector<AppStoreType, Array<TodolistType>>(state => state.todoLists)
-    let tasks = useSelector<AppStoreType, TasksStateType>(state => state.tasks)
+    let todolists = useSelector<AppRootStateType, Array<TodolistType>>(state => state.todoLists)
+    let tasks = useSelector<AppRootStateType, TasksStateType>(state => state.tasks)
 
     const dispatch = useDispatch()
 
